@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Колледж Расписание</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/static/1.png" alt="Лого" class="logo-img"> <!-- Здесь можно использовать ваше лого -->
+            <h1>Tajibaev Serik University</h1>
+        </div>
+        <nav>
+            <button class="nav-button">Авторизация</button>
+            <button class="nav-button">Перемена</button>
+            <button class="nav-button">Группы</button>
+        </nav>
+    </header>
+
+    <div class="schedule-container">
+        {% for group, days in schedule.items() %}
+            <div class="schedule-group">
+                <h2>{{ group }}</h2>
+                <table>
+                    <tr>
+                        <th>Күн</th>
+                        <th>1-сабақ</th>
+                        <th>2-сабақ</th>
+                        <th>3-сабақ</th>
+                    </tr>
+                    {% for day, lessons in days.items() %}
+                        <tr>
+                            <td>{{ day }}</td>
+                            {% for lesson in lessons %}
+                                <td>{{ lesson[0] }}<br>{{ lesson[1] }}<br>{{ lesson[2] }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
